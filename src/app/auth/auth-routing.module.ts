@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ConfirmMailComponent } from './account/confirm-mail/confirm-mail.component';
 import { LockScreenComponent } from './account/lock-screen/lock-screen.component';
-import { LoginComponent } from './account/login/login.component';
 import { LogoutComponent } from './account/logout/logout.component';
 import { RecoverPasswordComponent } from './account/recover-password/recover-password.component';
 import { RegisterComponent } from './account/register/register.component';
@@ -16,11 +15,14 @@ import { Register2Component } from './account2/register2/register2.component';
 import { SigninSignup2Component } from './account2/signin-signup2/signin-signup2.component';
 
 const routes: Routes = [
+
   {
     path: 'login',
-    component: LoginComponent,
+    component: Login2Component,
     pathMatch: 'full'
   },
+
+
   {
     path: 'register',
     component: RegisterComponent,
@@ -49,12 +51,6 @@ const routes: Routes = [
   {
     path: 'signin-signup',
     component: SigninSignupComponent,
-    pathMatch: 'full'
-  },
-
-  {
-    path: 'login2',
-    component: Login2Component,
     pathMatch: 'full'
   },
   {

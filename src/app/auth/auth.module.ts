@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
-import { LoginComponent } from './account/login/login.component';
 import { Login2Component } from './account2/login2/login2.component';
 import { ConfirmMailComponent } from './account/confirm-mail/confirm-mail.component';
 import { ConfirmMail2Component } from './account2/confirm-mail2/confirm-mail2.component';
@@ -25,7 +24,6 @@ import { WidgetModule } from '../shared/widget/widget.module';
 
 @NgModule({
   declarations: [
-    LoginComponent,
     Login2Component,
     ConfirmMailComponent,
     ConfirmMail2Component,

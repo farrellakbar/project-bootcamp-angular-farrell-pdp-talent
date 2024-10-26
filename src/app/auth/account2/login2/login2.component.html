@@ -1,4 +1,4 @@
-<app-default-layout2>
+    <app-default-layout2>
     <!-- title-->
     <h4 class="mt-0">Sign In</h4>
     <p class="text-muted mb-4">Enter your email address and password to access account.</p>
@@ -26,8 +26,8 @@
             </div>}
         </div>
         <div class="mb-3">
-            <a [routerLink]="['../reset-password2']" class="text-muted float-end"><small>Forgot your
-                    password?</small></a>
+            <!-- <a [routerLink]="['../reset-password2']" class="text-muted float-end"><small>Forgot your
+                    password?</small></a> -->
             <label for="password" class="form-label">Password</label>
             <div class="input-group input-group-merge">
                 <input [type]="showPassword? 'text' : 'password'" id="password" class="form-control" placeholder="Enter your password" formControlName="password" required minlength="4" [ngClass]="{'is-invalid': formSubmitted && formValues.password.invalid}">
@@ -50,17 +50,17 @@
             </div>
         </div>
 
-        <div class="mb-3">
+        <!-- <div class="mb-3">
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="checkbox-signin">
                 <label class="form-check-label" for="checkbox-signin">Remember me</label>
             </div>
-        </div>
+        </div> -->
         <div class="text-center d-grid">
             <button class="btn btn-primary" type="submit">Log In </button>
         </div>
         <!-- social-->
-        <div class="text-center mt-4">
+        <!-- <div class="text-center mt-4">
             <p class="text-muted font-16">Sign in with</p>
             <ul class="social-list list-inline mt-3">
                 <li class="list-inline-item">
@@ -76,14 +76,15 @@
                     <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github"></i></a>
                 </li>
             </ul>
-        </div>
+        </div> -->
     </form>
     <!-- end form-->
 
     <!-- Footer-->
     <footer class="footer footer-alt">
-        <p class="text-muted">Don't have an account? <a [routerLink]="['../register2']" class="text-muted ms-1"><b>Sign
-                    Up</b></a></p>
+        <p class="text-muted">Professional Development Program
+            <b>(PDP)</b>
+        </p>
     </footer>
 
 </app-default-layout2>

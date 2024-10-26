@@ -1,0 +1,44 @@
+<app-page-title [breadcrumbItems]="pageTitle" title="Sitemap"></app-page-title>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    @for (sitemap of sitemapData; track $index) {
+                    <div class="col-lg-4">
+                        <ul class="sitemap">
+                            <li>
+                                <a href="javascript: void(0);" class="text-uppercase fw-bold"><i class="mdi mdi-adjust me-1"></i>{{sitemap.label}}</a>
+                                <ng-container *ngTemplateOutlet="SiteMapMenu;context:{menu:sitemap.children}">
+                                </ng-container>
+                            </li>
+                        </ul>
+                    </div>
+                    } <!-- end col-->
+                </div> <!-- end row-->
+            </div>
+        </div> <!-- end card-->
+    </div> <!-- end col-->
+</div>
+<!-- end row-->
+
+<!-- reusable template -->
+<ng-template #SiteMapMenu let-menu="menu">
+    <ul>
+        @for (item of menu; track $index) {
+        <li>
+            @if(item.icon){
+            <a href="javascript: void(0);" [class]="item.className"><i class="{{item.icon}} me-1"></i>{{item.label}}</a>
+            }@else {
+            <a href="javascript: void(0);" [class]="item.className">{{item.label}}</a>
+            }
+            @if(item.children){
+            <ng-container>
+                <ng-container *ngTemplateOutlet="SiteMapMenu;context:{menu:item.children}"></ng-container>
+            </ng-container>
+            }
+        </li>
+        }
+    </ul>
+</ng-template>

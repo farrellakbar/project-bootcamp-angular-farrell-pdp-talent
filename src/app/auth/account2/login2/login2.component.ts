@@ -27,7 +27,7 @@ export class Login2Component implements OnInit {
 
   ngOnInit(): void {
     this.loginForm2 = this.fb.group({
-      email: ['ubold@coderthemes.com', [Validators.required, Validators.email]],
+      email: ['farrellakbar09@gmail.com', [Validators.required, Validators.email]],
       password: ['test', Validators.required]
     });
 
@@ -56,6 +56,7 @@ export class Login2Component implements OnInit {
         .subscribe(
           (data: any) => {
             this.router.navigate([this.returnUrl]);
+            console.log(data);
           },
           (error: any) => {
             this.error = error;

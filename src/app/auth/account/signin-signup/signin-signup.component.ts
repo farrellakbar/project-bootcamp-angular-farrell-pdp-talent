@@ -32,7 +32,7 @@ export class SigninSignupComponent implements OnInit {
   ngOnInit(): void {
 
     this.loginForm = this.fb.group({
-      email: ['ubold@coderthemes.com', [Validators.required, Validators.email]],
+      email: ['farrellakbar09@gmail.com', [Validators.required, Validators.email]],
       password: ['test', Validators.required]
     });
 

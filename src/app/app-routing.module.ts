@@ -13,12 +13,21 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
+        loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
       },
       {
         path: 'apps',
         loadChildren: () => import('./apps/apps.module').then(m => m.AppsModule),
       },
+      {
+        path: 'pages',
+        loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
+      },
+      // {
+      //   path: '**',
+      //   component: PublicLayoutComponent,
+      //   loadChildren: () => import('./pages/extra-pages/error404/error404.module').then(m => m.Error404Module)
+      // },
     ]
   },
   {

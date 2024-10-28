@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageTitleComponent } from './page-title.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -9,6 +10,7 @@ import { PageTitleComponent } from './page-title.component';
   ],
   imports: [
     CommonModule,
+    RouterModule
   ],
   exports: [PageTitleComponent]
 })

@@ -11,6 +11,8 @@ export class PageTitleComponent implements OnInit {
 
   @Input() breadcrumbItems: BreadcrumbItem[] = [];
   @Input() title: string = '';
+  @Input() dashboard: string = '/';
+
   constructor () { }
 
   ngOnInit(): void {

@@ -1,0 +1,20 @@
+<!-- page title -->
+<app-page-title [breadcrumbItems]="pageTitle" title="Master Data Batchs"></app-page-title>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <h4 class="header-title">Data Batch</h4>
+                    <button class="btn btn-primary btn-sm ms-auto"><i class="mdi mdi-plus"></i> Add Batch</button>
+                </div>
+                <app-advanced-table [tableData]="records" [columns]="columns" [pagination]="true"
+                    [pageSizeOptions]="pageSizeOptions" [hasRowSelection]="false" [isSearchable]="true"
+                    (search)="searchData($event)" [isSortable]="true" (sort)="onSort($event)">
+                </app-advanced-table>
+            </div> <!-- end card body-->
+        </div> <!-- end card -->
+    </div><!-- end col-->
+</div>
+<!-- end row-->

@@ -7,7 +7,7 @@ const MENU_ITEMS: MenuItem[] = [
     label: "Dashboards",
     isTitle: false,
     icon: "airplay",
-    link: "/dashboard-1",
+    link: "/admin/dashboard",
   },
   {
     key: "apps-projects",
@@ -19,8 +19,8 @@ const MENU_ITEMS: MenuItem[] = [
       {
         key: "project-list",
         label: "Batchs",
-        link: "/apps/projects/list",
-        parentKey: "apps-projects",
+        link: "/admin/batchs",
+        parentKey: "apps",
       },
       {
         key: "project-details",
@@ -32,7 +32,7 @@ const MENU_ITEMS: MenuItem[] = [
         key: "project-create-project",
         label: "Units",
         link: "/apps/projects/create",
-        parentKey: "apps-projects",
+        parentKey: "apps",
       },
       {
         key: "project-create-project",

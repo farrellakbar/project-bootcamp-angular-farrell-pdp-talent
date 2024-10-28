@@ -11,18 +11,25 @@ import { JwtInterceptor } from './core/helpers/jwt.interceptor';
 import { LayoutModule } from './layout/layout.module';
 
 @NgModule({ declarations: [
-        AppComponent
-    ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        JoyrideModule.forRoot(),
-        SweetAlert2Module.forRoot(),
-        AppRoutingModule,
-        LayoutModule], providers: [
-        Title,
-        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-        // provider used to create fake backend
-        FakeBackendProvider,
-        provideHttpClient(withInterceptorsFromDi()),
-    ] })
+                AppComponent
+            ],
+            bootstrap: [AppComponent], 
+            imports: 
+            [
+                BrowserModule,
+                JoyrideModule.forRoot(),
+                SweetAlert2Module.forRoot(),
+                AppRoutingModule,
+                LayoutModule
+            ], 
+            providers: 
+            [
+                Title,
+                { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+                { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+                // provider used to create fake backend
+                FakeBackendProvider,
+                provideHttpClient(withInterceptorsFromDi()),
+            ] 
+    })
 export class AppModule { }

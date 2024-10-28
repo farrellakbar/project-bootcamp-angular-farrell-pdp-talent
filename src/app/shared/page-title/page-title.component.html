@@ -4,15 +4,15 @@
         <div class="page-title-box">
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a>
+                    <li class="breadcrumb-item"><a [routerLink]="dashboard">Dashboard</a>
                     </li>
                     @for (item of breadcrumbItems; track $index) {
                     <ng-container>
 
                         @if(item.active){
-                        <li class="breadcrumb-item active"><a routerLink="[item.path]">{{item.label}}</a></li>
+                        <li class="breadcrumb-item active">{{item.label}}</li>
                         }@else{
-                        <li class="breadcrumb-item"><a href="javascript: void(0);" routerLink="[item.path]">{{item.label}}</a>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);" [routerLink]="item.path">{{item.label}}</a>
                         </li>
                         }
                     </ng-container>}

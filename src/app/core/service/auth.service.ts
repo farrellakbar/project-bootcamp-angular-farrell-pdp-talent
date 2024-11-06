@@ -7,6 +7,7 @@ import { User } from '../models/auth.models';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
+    private apiUrl = 'http://localhost:8080/auth'; // URL Spring Boot API
     user: User | null = null;
 
     constructor (private http: HttpClient) {
@@ -28,14 +29,13 @@ export class AuthenticationService {
      * @param password password of user
      */
     login(email: string, password: string): any {
-
-        return this.http.post<any>(`/api/login`, { email, password })
+        return this.http.post<any>(`${this.apiUrl}/login`, { email, password })
             .pipe(map(user => {
-                // login successful if there's a jwt token in the response
                 if (user && user.token) {
                     this.user = user;
-                    // store user details and jwt in session
+                    // Menyimpan detail user dan token JWT ke session
                     sessionStorage.setItem('currentUser', JSON.stringify(user));
+                    sessionStorage.setItem('menu', JSON.stringify(user.menu));
                 }
                 return user;
             }));
@@ -61,6 +61,8 @@ export class AuthenticationService {
     logout(): void {
         // remove user from session storage to log user out
         sessionStorage.removeItem('currentUser');
+        sessionStorage.removeItem('menu');
+
         this.user = null;
     }
 }

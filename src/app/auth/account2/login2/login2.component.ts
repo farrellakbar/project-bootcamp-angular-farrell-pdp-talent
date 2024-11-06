@@ -48,14 +48,17 @@ export class Login2Component implements OnInit {
    * On submit form
    */
   onSubmit(): void {
+    console.log('onSubmit');
+
     this.formSubmitted = true;
+    console.log('onSubmit');
     if (this.loginForm2.valid) {
       this.loading = true;
       this.authenticationService.login(this.formValues.email?.value, this.formValues.password?.value)
         .pipe(first())
         .subscribe(
           (data: any) => {
-            this.router.navigate([this.returnUrl]);
+            this.router.navigate(['/admin/dashboard']);
             console.log(data);
           },
           (error: any) => {

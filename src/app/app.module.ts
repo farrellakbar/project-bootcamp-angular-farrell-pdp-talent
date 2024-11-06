@@ -28,7 +28,7 @@ import { LayoutModule } from './layout/layout.module';
                 { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
                 { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
                 // provider used to create fake backend
-                FakeBackendProvider,
+                // FakeBackendProvider,
                 provideHttpClient(withInterceptorsFromDi()),
             ] 
     })

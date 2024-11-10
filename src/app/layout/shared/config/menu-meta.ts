@@ -24,8 +24,8 @@ const MENU_ITEMS: MenuItem[] = [
       },
       {
         key: "project-details",
-        label: "Roles",
-        link: "/apps/projects/details",
+        label: "Access",
+        link: "/admin/accesses",
         parentKey: "apps-projects",
       },
       {

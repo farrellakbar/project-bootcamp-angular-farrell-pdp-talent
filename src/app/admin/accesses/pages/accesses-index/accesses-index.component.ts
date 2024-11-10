@@ -1,45 +1,43 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
-import { catchError } from 'rxjs';
-import { BatchService } from 'src/app/core/service/batch.service';
-// import { AdvancedTable } from 'src/app/pages/tables/advance/advance.model';
-// import { tableData } from 'src/app/pages/tables/advance/data';
+import { AccessService } from 'src/app/core/service/access.service';
 import { Column } from 'src/app/shared/advanced-table/advanced-table.component';
 import { SortEvent } from 'src/app/shared/advanced-table/sortable.directive';
 import { BreadcrumbItem } from 'src/app/shared/page-title/page-title.model';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-batchs-index',
-  templateUrl: './batchs-index.component.html',
-  styleUrl: './batchs-index.component.scss'
+  selector: 'app-accesses-index',
+  templateUrl: './accesses-index.component.html',
+  styleUrl: './accesses-index.component.scss'
 })
-export class BatchsIndexComponent implements OnInit {
+export class AccessesIndexComponent implements OnInit {
   pageTitle: BreadcrumbItem[] = [];
   records: any[] = [];
   columns: Column[] = [];
+
   pageSizeOptions: number[] = [10, 25, 50, 100];
 
-  batchs: any[] = [];
-
   @ViewChild('deleteSwal') deleteSwal!: SwalComponent;
-  constructor(private batchService: BatchService, private router: Router) {}
-
+  constructor(
+              private accessService: AccessService, 
+              private router: Router
+            ) {}
   ngOnInit() {
     this.pageTitle = [
       { label: 'Master Data', path: '/' },
-      { label: 'Batch', path: '', active: true },
+      { label: 'Access', path: '', active: true },
     ];
     this.initTableConfig();
     this._fetchData();
-    // console.log('aaa'+this._fetchData());
   }
 
   private _fetchData() {
-    this.batchService.getBatches().subscribe(
+    this.accessService.getAccesses().subscribe(
       (data) => {
         this.records = data;
+        console.log(this.records);
       },
       (error) => {
         console.error('Error fetching batches:', error);
@@ -50,20 +48,10 @@ export class BatchsIndexComponent implements OnInit {
     initTableConfig() {
       this.columns = [
         {
-          name: 'nameBatch',
-          label: 'Name Batch',
-          formatter: (record: any) => record.nameBatch,
-          width: 245,
-        },
-        {
-          name: 'totalBudget',
-          label: 'Total Budget',
-          formatter: (record: any) => record.totalBudget,
-        },
-        {
-          name: 'allocatedBudget',
-          label: 'Allocated Budget',
-          formatter: (record: any) => record.allocatedBudget,
+          name: 'nameAccess',
+          label: 'Name Access',
+          formatter: (record: any) => record.nameAccess,
+          width: 700,
         },
         {
           name: 'active',
@@ -79,13 +67,13 @@ export class BatchsIndexComponent implements OnInit {
     }
 
   editRecord(id: number) {
-    this.router.navigate([`/batch/edit`, id]);
+    this.router.navigate([`/access/edit`, id]);
   }
   deleteRecord(id: number) {
     if (this.deleteSwal) {
       this.deleteSwal.fire().then((result) => {
         if (result.isConfirmed) {
-          this.batchService.deleteBatch(id).subscribe({
+          this.accessService.deleteAccess(id).subscribe({
             next: () => {
               Swal.fire('Deleted!', 'The batch has been deleted.', 'success');
               this._fetchData(); // Refresh data after deletion

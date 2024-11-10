@@ -1,0 +1,26 @@
+<app-page-title [breadcrumbItems]="pageTitle" title="Create New Access"></app-page-title>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="header-title">Add Access</h4>
+        <form #batchForm="ngForm" (ngSubmit)="onSubmit(batchForm)">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="nameAccess" placeholder="Access Name" [(ngModel)]="accessData['name-access']" name="nameAccess" required>
+            <label for="nameBatch">Name Access</label>
+          </div> 
+          <div class="form-check form-switch">
+            <input type="checkbox" class="form-check-input" id="isActive" [(ngModel)]="accessData['is-active']" name="isActive">
+            <label class="form-check-label" for="isActive">Is Active?</label>
+          </div>
+          <button type="submit" class="btn btn-success">Create</button>
+        </form>
+      </div> <!-- end card-body -->
+    </div> <!-- end card -->
+  </div><!-- end col -->
+</div>
+
+<!-- SweetAlert Success & Error Components -->
+<swal #successAlert title="Good Job!" text="Access created successfully!" icon="success"></swal>
+<swal #errorAlert title="Error" text="Failed to create batch. Please try again." icon="error"></swal>

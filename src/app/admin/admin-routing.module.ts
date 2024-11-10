@@ -24,6 +24,12 @@ const routes: Routes = [
             loadChildren: () => import('./batchs/batchs.module').then(m => m.BatchsModule)
           },
         // CLOSE BATCHS
+        //OPEN BATCHS
+          {
+            path: 'accesses',
+            loadChildren: () => import('./accesses/accesses.module').then(m => m.AccessesModule)
+          },
+        // CLOSE BATCHS
       // CLOSE DATA MASTER
       // OPEN PAGE USERS INDEX
         { 

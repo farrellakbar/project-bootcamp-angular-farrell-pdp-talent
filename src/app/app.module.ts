@@ -1,4 +1,4 @@
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
@@ -9,6 +9,7 @@ import { ErrorInterceptor } from './core/helpers/error.interceptor';
 import { FakeBackendProvider } from './core/helpers/fake-backend';
 import { JwtInterceptor } from './core/helpers/jwt.interceptor';
 import { LayoutModule } from './layout/layout.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({ declarations: [
                 AppComponent
@@ -20,7 +21,8 @@ import { LayoutModule } from './layout/layout.module';
                 JoyrideModule.forRoot(),
                 SweetAlert2Module.forRoot(),
                 AppRoutingModule,
-                LayoutModule
+                LayoutModule,
+                CoreModule
             ], 
             providers: 
             [

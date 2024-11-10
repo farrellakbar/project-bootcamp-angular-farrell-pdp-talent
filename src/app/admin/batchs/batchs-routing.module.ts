@@ -4,18 +4,18 @@ import { BatchsIndexComponent } from './pages/batchs-index/batchs-index.componen
 import { BatchsCreateComponent } from './pages/batchs-create/batchs-create.component';
 
 const routes: Routes = [
-  // OPEN PAGE DASHBOARD INDEX
+  // OPEN PAGE BATCHS INDEX
     { 
       path: '', 
       component: BatchsIndexComponent 
     },
-  // CLOSE PAGE DASHBOARD INDEX
-  // OPEN PAGE DASHBOARD CREATE
+  // CLOSE PAGE BATCHS INDEX
+  // OPEN PAGE BATCHS CREATE
     { 
       path: 'create', 
       component: BatchsCreateComponent 
     },
-  // CLOSE PAGE DASHBOARD CREATE
+  // CLOSE PAGE BATCHS CREATE
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

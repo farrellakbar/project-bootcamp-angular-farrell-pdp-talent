@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UsersIndexComponent } from './users/pages/users-index/users-index.component';
 
 const routes: Routes = [
   {
@@ -21,9 +22,15 @@ const routes: Routes = [
           {
             path: 'batchs',
             loadChildren: () => import('./batchs/batchs.module').then(m => m.BatchsModule)
-          }
+          },
         // CLOSE BATCHS
       // CLOSE DATA MASTER
+      // OPEN PAGE USERS INDEX
+        { 
+          path: 'users', 
+          loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
+        },
+      // CLOSE PAGE USERS INDEX
     ]
   },
 ];

@@ -27,8 +27,8 @@ export class Login2Component implements OnInit {
 
   ngOnInit(): void {
     this.loginForm2 = this.fb.group({
-      email: ['farrellakbar09@gmail.com', [Validators.required, Validators.email]],
-      password: ['test', Validators.required]
+      email: ['farrell@example.com', [Validators.required, Validators.email]],
+      password: ['MFA@123', Validators.required]
     });
 
     // reset login status

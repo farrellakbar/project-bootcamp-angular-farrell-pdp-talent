@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, ComponentFactoryResolver, EventEmitter, Input, OnInit, Output, QueryList, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, ComponentFactoryResolver, EventEmitter, Input, OnInit, Output, QueryList, SimpleChanges, TemplateRef, ViewChild, ViewChildren } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AdvancedTableServices } from './advanced-table-service.service';
 import { NgbSortableHeaderDirective, SortEvent } from './sortable.directive';
@@ -32,6 +32,8 @@ export class AdvancedTableComponent implements OnInit, AfterViewChecked {
   @Input() theadClasses: string = '';
   @Input() hasRowSelection: boolean = false;
   @Input() columns: Column[] = [];
+  @Input() actionTemplate!: TemplateRef<any>;
+
   collectionSize: number = this.tableData.length;
   selectAll: boolean = false;
   isSelected: boolean[] = [];

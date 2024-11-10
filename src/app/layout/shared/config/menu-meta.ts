@@ -47,7 +47,7 @@ const MENU_ITEMS: MenuItem[] = [
     label: "Users",
     isTitle: false,
     icon: "user",
-    link: "/apps/social-feed",
+    link: "/admin/users",
   },
   {
     key: "apps-social",

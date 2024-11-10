@@ -65,22 +65,14 @@
             }
         </thead>
         <tbody>
-            @for (record of tableData | slice: (service.page-1) * service.pageSize : service.page * service.pageSize;; track $index) {
-            <tr [class.selected]="isSelected[+((service.page-1) * service.pageSize)]">
-                @if(hasRowSelection){
-                <td>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" [checked]="isSelected[$index+((service.page-1) * service.pageSize)]" value="" id="flexCheckIndeterminate" (change)="selectRow($index+((service.page-1) * service.pageSize))">
-                    </div>
-                </td>
-                }
-                @for (column of columns; track $index) {
-                <td>
-                    <div [innerHtml]="callFormatter(column,record)"></div>
-                </td>
-                }
-            </tr>}
+            <tr *ngFor="let record of tableData | slice: (service.page - 1) * service.pageSize : service.page * service.pageSize">
+              <td *ngFor="let column of columns">
+                <div *ngIf="column.name !== 'actions'">{{ callFormatter(column, record) }}</div>
+                <ng-container *ngIf="column.name === 'actions'" [ngTemplateOutlet]="actionTemplate" [ngTemplateOutletContext]="{ $implicit: record }"></ng-container>
+              </td>
+            </tr>
         </tbody>
+          
     </table>
 
     @if(pagination){

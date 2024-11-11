@@ -31,7 +31,7 @@ const MENU_ITEMS: MenuItem[] = [
       {
         key: "project-create-project",
         label: "Units",
-        link: "/apps/projects/create",
+        link: "/admin/units",
         parentKey: "apps",
       },
       {

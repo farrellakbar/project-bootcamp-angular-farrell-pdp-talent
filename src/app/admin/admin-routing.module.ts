@@ -37,6 +37,12 @@ const routes: Routes = [
           loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
         },
       // CLOSE PAGE USERS INDEX
+      // OPEN PAGE UNITS INDEX
+        { 
+          path: 'units', 
+          loadChildren: () => import('./units/units.module').then(m => m.UnitsModule)
+        },
+      // CLOSE PAGE UNITS INDEX
     ]
   },
 ];

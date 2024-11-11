@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { BatchsRoutingModule } from './batchs/batchs-routing.module';
+import { UnitsRoutingModule } from './units/units-routing.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { BatchsRoutingModule } from './batchs/batchs-routing.module';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    BatchsRoutingModule
+    BatchsRoutingModule,
+    UnitsRoutingModule
   ]
 })
 export class AdminModule { }

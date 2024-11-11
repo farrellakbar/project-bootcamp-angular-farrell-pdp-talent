@@ -10,12 +10,12 @@ const routes: Routes = [
       component: AccessesIndexComponent 
     },
   // CLOSE PAGE ACCESS INDEX
-  // OPEN PAGE BATCHS CREATE
+  // OPEN PAGE ACCESS CREATE
     { 
       path: 'create', 
       component: AccessesCreateComponent 
     },
-  // CLOSE PAGE BATCHS CREATE
+  // CLOSE PAGE ACCESS CREATE
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

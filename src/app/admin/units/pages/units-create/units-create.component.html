@@ -1,0 +1,34 @@
+<app-page-title [breadcrumbItems]="pageTitle" title="Create New Unit"></app-page-title>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="header-title">Add Unit</h4>
+        <form #batchForm="ngForm" (ngSubmit)="onSubmit(batchForm)">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="nameUnit" placeholder="Unit Name" [(ngModel)]="unitData['name-unit']" name="nameUnit" required>
+            <label for="nameBatch">Name Unit</label>
+          </div> 
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="location" placeholder="Location" [(ngModel)]="unitData['location']" name="location" required>
+            <label for="location">Location</label>
+          </div> 
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="division" placeholder="Division" [(ngModel)]="unitData['division']" name="division" required>
+            <label for="division">Division</label>
+          </div> 
+          <div class="form-check form-switch">
+            <input type="checkbox" class="form-check-input" id="isActive" [(ngModel)]="unitData['is-active']" name="isActive">
+            <label class="form-check-label" for="isActive">Is Active?</label>
+          </div>
+          <button type="submit" class="btn btn-success">Create</button>
+        </form>
+      </div> <!-- end card-body -->
+    </div> <!-- end card -->
+  </div><!-- end col -->
+</div>
+
+<!-- SweetAlert Success & Error Components -->
+<swal #successAlert title="Good Job!" text="Access created successfully!" icon="success"></swal>
+<swal #errorAlert title="Error" text="Failed to create batch. Please try again." icon="error"></swal>

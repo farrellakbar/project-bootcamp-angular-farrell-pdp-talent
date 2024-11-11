@@ -1,0 +1,30 @@
+<app-page-title [breadcrumbItems]="pageTitle" title="Create New Program"></app-page-title>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="header-title">Add Program</h4>
+        <form #batchForm="ngForm" (ngSubmit)="onSubmit(batchForm)">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="nameProgram" placeholder="Program Name" [(ngModel)]="programData['name-program']" name="nameProgram" required>
+            <label for="nameProgram">Name Program</label>
+          </div> 
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="PriceForecasts" placeholder="PriceForecasts" [(ngModel)]="programData['price-forecasts']" name="PriceForecasts" required>
+            <label for="PriceForecasts">Price Forecasts</label>
+          </div>
+          <div class="form-check form-switch">
+            <input type="checkbox" class="form-check-input" id="isActive" [(ngModel)]="programData['is-active']" name="isActive">
+            <label class="form-check-label" for="isActive">Is Active?</label>
+          </div>
+          <button type="submit" class="btn btn-success">Create</button>
+        </form>
+      </div> <!-- end card-body -->
+    </div> <!-- end card -->
+  </div><!-- end col -->
+</div>
+
+<!-- SweetAlert Success & Error Components -->
+<swal #successAlert title="Good Job!" text="Access created successfully!" icon="success"></swal>
+<swal #errorAlert title="Error" text="Failed to create batch. Please try again." icon="error"></swal>

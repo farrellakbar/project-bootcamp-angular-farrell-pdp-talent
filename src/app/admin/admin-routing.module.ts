@@ -30,6 +30,12 @@ const routes: Routes = [
             loadChildren: () => import('./accesses/accesses.module').then(m => m.AccessesModule)
           },
         // CLOSE BATCHS
+        //OPEN PROGRAMS
+          {
+            path: 'programs',
+            loadChildren: () => import('./programs/programs.module').then(m => m.ProgramsModule)
+          },
+        // CLOSE PROGRAMS
       // CLOSE DATA MASTER
       // OPEN PAGE USERS INDEX
         { 

@@ -21,9 +21,9 @@ export class UsersIndexComponent {
   @ViewChild('deleteSwal') deleteSwal!: SwalComponent;
 
   constructor(
-    private userService: UserService, 
-    private router: Router
-) { }
+      private userService: UserService, 
+      private router: Router
+  ) { }
   ngOnInit(): void {
     this.pageTitle = [
       { label: 'Master Data', path: '/' },

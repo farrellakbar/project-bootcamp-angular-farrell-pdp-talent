@@ -43,18 +43,18 @@ const MENU_ITEMS: MenuItem[] = [
     ],
   },
   {
-    key: "apps-social",
+    key: "user",
     label: "Users",
     isTitle: false,
     icon: "user",
     link: "/admin/users",
   },
   {
-    key: "apps-social",
+    key: "groups",
     label: "Groups",
     isTitle: false,
     icon: "users",
-    link: "/apps/social-feed",
+    link: "/admin/groups",
   },
 ];
 

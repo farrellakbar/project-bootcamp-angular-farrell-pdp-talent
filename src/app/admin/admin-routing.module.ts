@@ -30,6 +30,12 @@ const routes: Routes = [
             loadChildren: () => import('./accesses/accesses.module').then(m => m.AccessesModule)
           },
         // CLOSE BATCHS
+        // OPEN PAGE UNITS INDEX
+          { 
+            path: 'units', 
+            loadChildren: () => import('./units/units.module').then(m => m.UnitsModule)
+          },
+        // CLOSE PAGE UNITS INDEX
         //OPEN PROGRAMS
           {
             path: 'programs',
@@ -43,12 +49,12 @@ const routes: Routes = [
           loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
         },
       // CLOSE PAGE USERS INDEX
-      // OPEN PAGE UNITS INDEX
+      // OPEN PAGE GROUPS INDEX
         { 
-          path: 'units', 
-          loadChildren: () => import('./units/units.module').then(m => m.UnitsModule)
+          path: 'groups', 
+          loadChildren: () => import('./groups/groups.module').then(m => m.GroupsModule)
         },
-      // CLOSE PAGE UNITS INDEX
+      // CLOSE PAGE GROUPS INDEX
     ]
   },
 ];

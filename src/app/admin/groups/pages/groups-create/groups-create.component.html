@@ -1,0 +1,30 @@
+<app-page-title [breadcrumbItems]="pageTitle" title="Create New Group"></app-page-title>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="header-title">Add Group</h4>
+        <form #batchForm="ngForm" (ngSubmit)="onSubmit(batchForm)">
+          <!-- Email Input -->
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="nameGroup" placeholder="ITDP 10 Group" [(ngModel)]="groupData['name-group']" name="nameGroup" required>
+            <label for="nameGroup">Group Name</label>
+          </div>
+
+          <!-- Is Active Switch -->
+          <div class="form-check form-switch mb-3">
+            <input type="checkbox" class="form-check-input" id="isActive" [(ngModel)]="groupData['is-active']" name="isActive">
+            <label class="form-check-label" for="isActive">Is Active?</label>
+          </div>
+
+          <button type="submit" class="btn btn-success">Create</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SweetAlert Success & Error Components -->
+<swal #successAlert title="Good Job!" text="Group created successfully!" icon="success"></swal>
+<swal #errorAlert title="Error" text="Failed to create group. Please try again." icon="error"></swal>

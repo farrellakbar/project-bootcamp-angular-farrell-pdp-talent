@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UsersIndexComponent } from './pages/users-index/users-index.component';
 
-import { UsersRoutingModule } from './users-routing.module';
-import { SharedModule } from 'src/app/layout/shared/shared.module';
+import { GroupsRoutingModule } from './groups-routing.module';
+import { GroupsIndexComponent } from './pages/groups-index/groups-index.component';
+import { GroupsCreateComponent } from './pages/groups-create/groups-create.component';
 import { PageTitleModule } from 'src/app/shared/page-title/page-title.module';
 import { AdvancedTableModule } from 'src/app/shared/advanced-table/advanced-table.module';
-import { UsersCreateComponent } from './pages/users-create/users-create.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 @NgModule({
   declarations: [
-    UsersIndexComponent,
-    UsersCreateComponent
+    GroupsIndexComponent,
+    GroupsCreateComponent
   ],
   imports: [
     CommonModule,
-    UsersRoutingModule,
+    GroupsRoutingModule,
     PageTitleModule,
     AdvancedTableModule,
     SharedModule,
@@ -26,4 +26,4 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     SweetAlert2Module
   ]
 })
-export class UsersModule { }
+export class GroupsModule { }

@@ -1,17 +1,38 @@
 <!-- page title -->
-<app-page-title [breadcrumbItems]="pageTitle" title="Master Data Users"></app-page-title>
+<app-page-title [breadcrumbItems]="pageTitle" title="Master Data User"></app-page-title>
 
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
                 <div class="d-flex align-items-center">
-                    <h4 class="header-title">Data Users</h4>
-                    <button class="btn btn-primary btn-sm ms-auto"><i class="mdi mdi-plus"></i> Add Users</button>
+                    <h4 class="header-title">Data User</h4>
+                    <a [routerLink]="['create']" class="btn btn-primary btn-sm ms-auto"><i class="mdi mdi-plus"></i>Add User</a>
                 </div>
-                <app-advanced-table [tableData]="records" [columns]="columns" [pagination]="true"
-                    [pageSizeOptions]="pageSizeOptions" [hasRowSelection]="false" [isSearchable]="true"
-                    (search)="searchData($event)" [isSortable]="true" (sort)="onSort($event)">
+                <ng-template #actionTemplate let-record>
+                    <button class="btn btn-warning btn-sm me-2" (click)="editRecord(record.id)">Edit</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteRecord(record.id)">Delete</button>
+                </ng-template>
+                <swal #deleteSwal
+                    title="Are you sure?"
+                    text="You won't be able to revert this!"
+                    icon="warning"
+                    [showCancelButton]="true"
+                    [confirmButtonColor]="'#28bb4b'"
+                    [cancelButtonColor]="'#f34e4e'"
+                    confirmButtonText="Yes, delete it!">
+                </swal>
+                <app-advanced-table 
+                    [tableData]="records" 
+                    [columns]="columns" 
+                    [pagination]="true"
+                    [pageSizeOptions]="pageSizeOptions" 
+                    [hasRowSelection]="false" 
+                    [isSearchable]="true"
+                    (search)="searchData($event)" 
+                    [isSortable]="true" 
+                    (sort)="onSort($event)"
+                    [actionTemplate]="actionTemplate">
                 </app-advanced-table>
             </div> <!-- end card body-->
         </div> <!-- end card -->

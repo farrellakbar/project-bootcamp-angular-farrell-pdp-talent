@@ -1,0 +1,63 @@
+<app-page-title [breadcrumbItems]="pageTitle" title="Create New User"></app-page-title>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="header-title">Add User</h4>
+        <form #batchForm="ngForm" (ngSubmit)="onSubmit(batchForm)">
+          <!-- Email Input -->
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="email" placeholder="farrell@example.com" [(ngModel)]="userData['email']" name="email" required>
+            <label for="email">Email</label>
+          </div>
+
+          <!-- Password Input -->
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="userData['password']" name="password">
+            <label for="password">Password (optional)</label>
+          </div>
+
+          <!-- Batch Dropdown -->
+          <!-- Batch Dropdown -->
+          <div class="form-floating mb-3">
+            <select
+              class="form-select"
+              [(ngModel)]="userData['id-batch']"
+              (ngModelChange)="userData['id-batch'] = +$event" 
+              name="batch"
+              required>
+              <option *ngFor="let batch of batchOptions" [value]="batch.id">{{ batch.nameBatch }}</option>
+            </select>
+            <label for="idBatch">Batch</label>
+          </div>
+
+          <!-- Access Dropdown -->
+          <div class="form-floating mb-3">
+            <select
+              class="form-select"
+              [(ngModel)]="userData['id-access']"
+              (ngModelChange)="userData['id-access'] = +$event"
+              name="access"
+              required>
+              <option *ngFor="let access of accessOptions" [value]="access.id">{{ access.nameAccess }}</option>
+            </select>
+            <label for="idAccess">Access</label>
+          </div>
+
+          <!-- Is Active Switch -->
+          <div class="form-check form-switch mb-3">
+            <input type="checkbox" class="form-check-input" id="isActive" [(ngModel)]="userData['is-active']" name="isActive">
+            <label class="form-check-label" for="isActive">Is Active?</label>
+          </div>
+
+          <button type="submit" class="btn btn-success">Create</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SweetAlert Success & Error Components -->
+<swal #successAlert title="Good Job!" text="User created successfully!" icon="success"></swal>
+<swal #errorAlert title="Error" text="Failed to create user. Please try again." icon="error"></swal>

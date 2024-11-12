@@ -35,19 +35,18 @@ export class ProgramsCreateComponent implements OnInit {
     ];
   };
 
-    onSubmit(form: NgForm): void {
+  onSubmit(form: NgForm): void {
     this.programService.saveProgram(this.programData).subscribe({
       next: (resp: any) => {
         // Tampilkan SweetAlert jika berhasil
         this.successAlert.fire();
-        this.router.navigate(['/admin/programs']); // Navigasi setelah alert
+        this.router.navigate(['/admin/programs']);
       },
       error: (err) => {
         // Tampilkan SweetAlert jika gagal
         this.errorAlert.fire();
-        console.error('Error creating unit:', err);
+        console.error('Error creating user:', err);
       }
     });
-    
   }
 }

@@ -35,7 +35,7 @@ export class AccessesCreateComponent implements OnInit {
         next: (resp: any) => {
           // Tampilkan SweetAlert jika berhasil
           this.successAlert.fire();
-          this.router.navigate(['/admin/accesses']); // Navigasi setelah alert
+          this.router.navigate(['/admin/accesses']);
         },
         error: (err) => {
           // Tampilkan SweetAlert jika gagal

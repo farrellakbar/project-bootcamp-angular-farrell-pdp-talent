@@ -40,7 +40,7 @@ export class BatchsCreateComponent implements OnInit {
         next: (resp: any) => {
           // Tampilkan SweetAlert jika berhasil
           this.successAlert.fire();
-          this.router.navigate(['/admin/batchs']); // Navigasi setelah alert
+          this.router.navigate(['/admin/batchs']);
         },
         error: (err) => {
           // Tampilkan SweetAlert jika gagal

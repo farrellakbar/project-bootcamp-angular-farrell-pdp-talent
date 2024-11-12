@@ -18,6 +18,11 @@ export class BatchService {
       return this.http.get<any>(`${this.apiUrl}/batch/not-deleted`);
   }
 
+  
+  getBatchesActive(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/batch/all-active`);
+  }
+
   saveBatch(batchData: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/batch`, batchData);
   }

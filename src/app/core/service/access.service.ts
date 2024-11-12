@@ -18,6 +18,10 @@ export class AccessService {
       return this.http.get<any>(`${this.apiUrl}/access/not-deleted`);
   }
 
+  getAccessesActive(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/access/all-active`);
+  }
+
   saveAccess(batchData: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/access`, batchData);
   }

@@ -1,13 +1,28 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { AuthenticationService } from './auth.service';
 
-import { User } from '../models/auth.models';
+@Injectable({
+  providedIn: 'root',
+})
+export class UserService {
+  private apiUrl = 'http://localhost:8080';
 
-@Injectable({ providedIn: 'root' })
-export class UserProfileService {
-    constructor(private http: HttpClient) { }
 
-    getAll() {
-        return this.http.get<User[]>(`/api/login`);
-    }
+  constructor(
+    private http: HttpClient,
+  ) { }
+  // Metode untuk mendapatkan daftar batch dari API
+  getUsers(): Observable<any> {
+      return this.http.get<any>(`${this.apiUrl}/user/not-deleted`);
+  }
+
+  saveUser(batchData: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/user`, batchData);
+  }
+
+  deleteUser(id: number): Observable<any> {
+    return this.http.put(`${this.apiUrl}/user/soft-delete/${id}`, {});
+  }
 }

@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
-import { AdvancedTable } from 'src/app/pages/tables/advance/advance.model';
-import { tableData } from 'src/app/pages/tables/advance/data';
+import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
+import { UserService } from 'src/app/core/service/user.service';
 import { Column } from 'src/app/shared/advanced-table/advanced-table.component';
 import { SortEvent } from 'src/app/shared/advanced-table/sortable.directive';
 import { BreadcrumbItem } from 'src/app/shared/page-title/page-title.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-users-index',
@@ -12,10 +14,16 @@ import { BreadcrumbItem } from 'src/app/shared/page-title/page-title.model';
 })
 export class UsersIndexComponent {
   pageTitle: BreadcrumbItem[] = [];
-  records: AdvancedTable[] = [];
+  records: any[] = [];
   columns: Column[] = [];
   pageSizeOptions: number[] = [10, 25, 50, 100];
 
+  @ViewChild('deleteSwal') deleteSwal!: SwalComponent;
+
+  constructor(
+    private userService: UserService, 
+    private router: Router
+) { }
   ngOnInit(): void {
     this.pageTitle = [
       { label: 'Master Data', path: '/' },
@@ -24,55 +32,79 @@ export class UsersIndexComponent {
     this._fetchData();
     this.initTableCofig();
   }
-    _fetchData(): void {
-      this.records = tableData;
-    }
+  private _fetchData() {
+    this.userService.getUsers().subscribe(
+      (data) => {
+        this.records = data;
+        console.log(this.records);
+      },
+      (error) => {
+        console.error('Error fetching users:', error);
+      }
+    );
+  }
   //OPEN INITIALIZE TABLE CONFIGURATION
     initTableCofig(): void {
       this.columns = [
         {
-          name: 'name',
-          label: 'Name',
-          formatter: (record: AdvancedTable) => record.name,
-          width: 245,
+          name: 'email',
+          label: 'Email',
+          formatter: (record: any) => record.email,
         },
         {
-          name: 'position',
-          label: 'Position',
-          formatter: (record: AdvancedTable) => record.position,
-          width: 360,
+          name: 'nameAccess',
+          label: 'Access Name',
+          formatter: (record: any) => record.respAccessDTO ? record.respAccessDTO.nameAccess : '-',
         },
         {
-          name: 'office',
-          label: 'Office',
-          formatter: (record: AdvancedTable) => record.office,
-          width: 180
+          name: 'nameBatch',
+          label: 'Batch Name',
+          formatter: (record: any) => record.respBatchDTO ? record.respBatchDTO.nameBatch : '-',
         },
         {
-          name: 'age',
-          label: 'Age',
-          formatter: (record: AdvancedTable) => record.age,
+          name: 'active',
+          label: 'Active',
+          formatter: (record: any) => (record.active ? 'Yes' : 'No'),
         },
         {
-          name: 'date',
-          label: 'Date',
-          formatter: (record: AdvancedTable) => record.date,
+          name: 'actions',
+          label: 'Actions',
+          formatter: () => '',
         },
-        {
-          name: 'salary',
-          label: 'Salary',
-          formatter: (record: AdvancedTable) => record.salary,
-
-        }
       ];
     }
   //CLOSE INITIALIZE TABLE CONFIGURATION
+  editRecord(id: number) {
+    this.router.navigate([`/unit/edit`, id]);
+  }
+  deleteRecord(id: number) {
+    if (this.deleteSwal) {
+      this.deleteSwal.fire().then((result) => {
+        if (result.isConfirmed) {
+          this.userService.deleteUser(id).subscribe({
+            next: () => {
+              Swal.fire('Deleted!', 'The program has been deleted.', 'success');
+              this._fetchData(); // Refresh data after deletion
+            },
+            error: (error) => {
+              Swal.fire('Error!', 'Failed to delete program.', 'error');
+              console.error('Error deleting program:', error);
+            }
+          });
+        }
+      });
+    } else {
+      console.error('deleteSwal is undefined');
+    }
+  }
+  
   compare(v1: string | number, v2: string | number): any {
     return v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
   }
-  onSort(event: SortEvent): void {
+
+  onSort(event: SortEvent) {
     if (event.direction === '') {
-      this.records = tableData;
+      this._fetchData();
     } else {
       this.records = [...this.records].sort((a, b) => {
         const res = this.compare(a[event.column], b[event.column]);
@@ -80,27 +112,15 @@ export class UsersIndexComponent {
       });
     }
   }
-  matches(row: AdvancedTable, term: string) {
-    return row.name.toLowerCase().includes(term)
-      || row.position.toLowerCase().includes(term)
-      || row.office.toLowerCase().includes(term)
-      || String(row.age).includes(term)
-      || row.date.toLowerCase().includes(term)
-      || row.salary.toLowerCase().includes(term);
-  }
 
-  //OPEN SEARCH DATA TABLE
-    searchData(searchTerm: string): void {
+    searchData(searchTerm: string) {
       if (searchTerm === '') {
         this._fetchData();
       }
       else {
-        let updatedData = tableData;
-
-        //  filter
-        updatedData = updatedData.filter(record => this.matches(record, searchTerm));
-        this.records = updatedData;
+        this.records = this.records.filter((record) =>
+          record.email.toLowerCase().includes(searchTerm.toLowerCase())
+        );
       }
     }
-  //CLOSE SEARCH DATA TABLE
 }

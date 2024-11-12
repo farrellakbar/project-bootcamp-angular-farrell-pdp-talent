@@ -40,7 +40,7 @@ export class UnitsCreateComponent implements OnInit {
       next: (resp: any) => {
         // Tampilkan SweetAlert jika berhasil
         this.successAlert.fire();
-        this.router.navigate(['/admin/units']); // Navigasi setelah alert
+        this.router.navigate(['/admin/units']);
       },
       error: (err) => {
         // Tampilkan SweetAlert jika gagal

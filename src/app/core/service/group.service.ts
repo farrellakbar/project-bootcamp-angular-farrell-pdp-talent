@@ -18,6 +18,10 @@ export class GroupService {
       return this.http.get<any>(`${this.apiUrl}/group/not-deleted`);
   }
 
+  getGroupsActive(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/group/all-active`);
+  }
+
   saveGroup(batchData: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/group`, batchData);
   }

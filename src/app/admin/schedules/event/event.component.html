@@ -1,0 +1,79 @@
+<ng-template #content let-modal>
+    <div class="modal-header py-3 px-4 border-bottom-0 d-block">
+      <button type="button" class="btn-close float-end" aria-label="Close" (click)="modal.dismiss('')"></button>
+      <h5 class="modal-title" id="modal-title">{{modelTitle}}</h5>
+    </div>
+    <div class="modal-body px-4 pb-4 pt-0">
+      <form class="needs-validation" name="event-form" id="form-event" (ngSubmit)="eventForm.submitted && saveEvent()" #eventForm="ngForm">
+        <div class="row">
+          <div class="col-12">
+            <div class="mb-3">
+              <label class="form-label">Start Date</label>
+              <input class="form-control" type="date" required [(ngModel)]="event.dateStart" name="dateStart" />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mb-3">
+              <label class="form-label">Duration (days)</label>
+              <input class="form-control" type="number" required [(ngModel)]="event.duration" name="duration" />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mb-3">
+              <label class="form-label">Group</label>
+              <select class="form-select" required [(ngModel)]="event.groupId" name="groupId">
+                <option *ngFor="let group of groups" [value]="group.id">{{ group.nameGroup }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mb-3">
+              <label class="form-label">Program</label>
+              <select class="form-select" required [(ngModel)]="event.programId" name="programId">
+                <option *ngFor="let program of programs" [value]="program.id">{{ program.nameProgram }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mb-3">
+              <label class="form-label">Unit</label>
+              <select class="form-select" [(ngModel)]="event.unitId" name="unitId">
+                <option *ngFor="let unit of units" [value]="unit.id">{{ unit.nameUnit }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-6 col-4">
+            <button *ngIf="modelTitle==='Edit Schedule'" type="button" class="btn btn-danger" (click)="deleteEvent()" id="btn-delete-event">Delete</button>
+          </div>
+          <div class="col-md-6 col-8 text-end">
+            <button type="button" class="btn btn-light me-1" (click)="modal.dismiss('')">Close</button>
+            <button type="submit" class="btn btn-success" id="btn-save-event" [disabled]="!eventForm.form.valid">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+  <swal
+    #confirmDeleteSwal
+    title="Are you sure?"
+    text="This action cannot be undone."
+    icon="warning"
+    [showCancelButton]="true"
+    confirmButtonColor="#d33"
+    cancelButtonColor="#3085d6"
+    confirmButtonText="Yes, delete it!"
+    (confirm)="deleteEvent()"
+  >
+  </swal>
+
+  <swal #successSaveAlert title="Success" text="Schedule saved successfully!" icon="success"></swal>
+  <swal #errorSaveAlert title="Error" text="Failed to save schedule." icon="error"></swal>
+
+  <swal #successUpdatedAlert title="Updated" text="Schedule updated successfully!" icon="success"></swal>
+  <swal #errorUpdatedAlert title="Error" text="Failed to update schedule." icon="error"></swal>
+  
+  <swal #successDeleteAlert title="Deleted" text="Schedule deleted successfully!" icon="success"></swal>
+  <swal #errorDeleteAlert title="Error" text="Failed to delete schedule." icon="error"></swal>
+  

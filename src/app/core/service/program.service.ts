@@ -18,6 +18,10 @@ export class ProgramService {
       return this.http.get<any>(`${this.apiUrl}/program/not-deleted`);
   }
 
+  getProgramsActive(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/program/all-active`);
+  }
+
   saveProgram(batchData: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/program`, batchData);
   }

@@ -17,27 +17,33 @@ const MENU_ITEMS: MenuItem[] = [
     collapsed: true,
     children: [
       {
-        key: "project-list",
+        key: "batchs",
         label: "Batchs",
         link: "/admin/batchs",
         parentKey: "admins",
       },
       {
-        key: "project-details",
+        key: "access",
         label: "Access",
         link: "/admin/accesses",
         parentKey: "admins",
       },
       {
-        key: "project-create-project",
+        key: "units",
         label: "Units",
         link: "/admin/units",
         parentKey: "admins",
       },
       {
-        key: "admin-program",
+        key: "programs",
         label: "Programs",
         link: "/admin/programs",
+        parentKey: "admins",
+      },
+      {
+        key: "groups",
+        label: "Groups",
+        link: "/admin/groups",
         parentKey: "admins",
       },
     ],
@@ -50,11 +56,11 @@ const MENU_ITEMS: MenuItem[] = [
     link: "/admin/users",
   },
   {
-    key: "groups",
-    label: "Groups",
+    key: "schedules",
+    label: "Schedules",
     isTitle: false,
-    icon: "users",
-    link: "/admin/groups",
+    icon: "calendar",
+    link: "/admin/schedules",
   },
 ];
 

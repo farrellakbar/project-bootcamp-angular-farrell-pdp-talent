@@ -1,0 +1,26 @@
+<!-- page title -->
+<app-page-title [breadcrumbItems]="pageTitle" title="Calendar"></app-page-title>
+
+<div class="row">
+    <div class="col-12">
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row">                
+                    <div class="col-lg-12">
+                        <div id="calendar">
+                            <button class="btn btn-lg font-16 btn-primary w-100" id="btn-new-event" (click)="createNewEvent()"><i class="mdi mdi-plus-circle-outline"></i> Create New
+                                Event
+                            </button>
+                            <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+                        </div>
+                    </div> <!-- end col -->
+                </div> <!-- end row -->
+            </div> <!-- end card body-->
+        </div> <!-- end card -->
+
+        <app-calendar-event #eventModal (eventSaved)="handleEventSave()" (eventDeleted)="handleEventDelete()" (eventUpdated)="handleEventUpdate()">
+        </app-calendar-event>
+    </div>
+    <!-- end col-12 -->
+</div> <!-- end row -->

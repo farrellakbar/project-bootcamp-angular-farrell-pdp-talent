@@ -18,6 +18,10 @@ export class UnitService {
       return this.http.get<any>(`${this.apiUrl}/unit/not-deleted`);
   }
 
+  getUnitsActive(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/unit/all-active`);
+  }
+
   saveUnit(batchData: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/unit`, batchData);
   }

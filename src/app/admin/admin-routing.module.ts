@@ -42,6 +42,12 @@ const routes: Routes = [
             loadChildren: () => import('./programs/programs.module').then(m => m.ProgramsModule)
           },
         // CLOSE PROGRAMS
+              // OPEN PAGE GROUPS INDEX
+              { 
+                path: 'groups', 
+                loadChildren: () => import('./groups/groups.module').then(m => m.GroupsModule)
+              },
+            // CLOSE PAGE GROUPS INDEX
       // CLOSE DATA MASTER
       // OPEN PAGE USERS INDEX
         { 
@@ -49,12 +55,12 @@ const routes: Routes = [
           loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
         },
       // CLOSE PAGE USERS INDEX
-      // OPEN PAGE GROUPS INDEX
+      // OPEN PAGE SCHEDULES INDEX
         { 
-          path: 'groups', 
-          loadChildren: () => import('./groups/groups.module').then(m => m.GroupsModule)
+          path: 'schedules', 
+          loadChildren: () => import('./schedules/schedules.module').then(m => m.SchedulesModule)
         },
-      // CLOSE PAGE GROUPS INDEX
+      // CLOSE PAGE SCHEDULES INDEX
     ]
   },
 ];

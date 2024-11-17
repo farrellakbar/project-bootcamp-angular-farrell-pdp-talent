@@ -26,8 +26,7 @@ export class UsersIndexComponent {
   ) { }
   ngOnInit(): void {
     this.pageTitle = [
-      { label: 'Master Data', path: '/' },
-      { label: 'Batchs', path: '', active: true }
+      { label: 'Users', path: '', active: true }
     ];
     this._fetchData();
     this.initTableCofig();

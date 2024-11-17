@@ -225,6 +225,7 @@ export class CalendarComponent implements OnInit {
         id: newEvent.id,
         title: newEvent.title,
         start: newEvent.start,
+        end: newEvent.end,
         classNames: newEvent.category,
       };
       this.calendarEventsData.push(nEvent);

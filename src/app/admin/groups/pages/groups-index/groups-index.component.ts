@@ -54,6 +54,16 @@ export class GroupsIndexComponent {
           width: 745,
         },
         {
+          name: 'users',
+          label: 'Users', 
+          formatter: (record: any) => {
+            return record.users && record.users.length > 0
+              ? record.users.map((user: any) => user.email).join(', ') 
+              : 'No Users';
+          },
+        },
+    
+        {
           name: 'active',
           label: 'Active',
           formatter: (record: any) => (record.active ? 'Yes' : 'No'),

@@ -17,6 +17,9 @@ export class UserService {
   getUsers(): Observable<any> {
       return this.http.get<any>(`${this.apiUrl}/user/not-deleted`);
   }
+  getUsersActiveByAccess(nameAccess: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/user/all-active-by-access?nameAccess=${nameAccess}`);
+  }
 
   saveUser(batchData: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/user`, batchData);

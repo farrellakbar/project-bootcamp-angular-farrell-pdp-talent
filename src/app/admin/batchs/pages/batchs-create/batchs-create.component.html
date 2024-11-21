@@ -5,29 +5,34 @@
     <div class="card">
       <div class="card-body">
         <h4 class="header-title">Add Batch</h4>
-        <form #batchForm="ngForm" (ngSubmit)="onSubmit(batchForm)">
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nameBatch" placeholder="Batch Name" [(ngModel)]="batchData['name-batch']" name="nameBatch" required>
-            <label for="nameBatch">Name Batch</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="totalBudget" placeholder="Total Budget" [(ngModel)]="batchData['total-budget']" name="totalBudget" required>
-            <label for="totalBudget">Total Budget</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="allocatedBudget" placeholder="Allocated Budget" [(ngModel)]="batchData['allocated-budget']" name="allocatedBudget" required>
-            <label for="allocatedBudget">Allocated Budget</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="talentId" placeholder="Talent ID" [(ngModel)]="batchData.talent.id" name="talentId" required>
-            <label for="talentId">Talent ID</label>
-          </div>
-          <div class="form-check form-switch">
-            <input type="checkbox" class="form-check-input" id="isActive" [(ngModel)]="batchData['is-active']" name="isActive">
-            <label class="form-check-label" for="isActive">Is Active?</label>
-          </div>
-          <button type="submit" class="btn btn-success">Create</button>
-        </form>
+          <form #batchForm="ngForm" (ngSubmit)="onSubmit(batchForm)">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="nameBatch" placeholder="Batch Name" [(ngModel)]="batchData['name-batch']" name="nameBatch" required>
+              <label for="nameBatch">Name Batch</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="totalBudget" placeholder="Total Budget" [(ngModel)]="batchData['total-budget']" name="totalBudget" required>
+              <label for="totalBudget">Total Budget</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="allocatedBudget" placeholder="Allocated Budget" [(ngModel)]="batchData['allocated-budget']" name="allocatedBudget" required>
+              <label for="allocatedBudget">Allocated Budget</label>
+            </div>
+            <div class="form-floating mb-3">
+              <select class="form-control" id="talentId" [(ngModel)]="batchData['id-talent']" (ngModelChange)="batchData['id-talent'] = +$event" name="talentId" required>
+                <option value="" disabled>-- Select Talent --</option>
+                <option *ngFor="let user of users" [value]="user.id">
+                  {{ user.email }}
+                </option>
+              </select>
+              <label for="talentId">Select Talent</label>
+            </div>
+            <div class="form-check form-switch">
+              <input type="checkbox" class="form-check-input" id="isActive" [(ngModel)]="batchData['is-active']" name="isActive">
+              <label class="form-check-label" for="isActive">Is Active?</label>
+            </div>
+            <button type="submit" class="btn btn-success">Create</button>
+          </form>
       </div> <!-- end card-body -->
     </div> <!-- end card -->
   </div><!-- end col -->

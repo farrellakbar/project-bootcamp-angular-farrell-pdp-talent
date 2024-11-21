@@ -16,6 +16,12 @@ const routes: Routes = [
       component: BatchsCreateComponent 
     },
   // CLOSE PAGE BATCHS CREATE
+  // OPEN PAGE BATCHS UPDATE
+    { 
+      path: 'update/:id',   
+      component: BatchsCreateComponent 
+    },
+  // CLOSE PAGE BATCHS UPDATE
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
-import { catchError } from 'rxjs';
 import { BatchService } from 'src/app/core/service/batch.service';
 // import { AdvancedTable } from 'src/app/pages/tables/advance/advance.model';
 // import { tableData } from 'src/app/pages/tables/advance/data';
@@ -79,7 +78,7 @@ export class BatchsIndexComponent implements OnInit {
     }
 
   editRecord(id: number) {
-    this.router.navigate([`/batch/edit`, id]);
+    this.router.navigate([`/admin/batchs/update`, id]);
   }
   deleteRecord(id: number) {
     if (this.deleteSwal) {

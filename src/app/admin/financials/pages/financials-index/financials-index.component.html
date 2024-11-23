@@ -9,12 +9,38 @@
                     <h4 class="header-title">Data Financial</h4>
                 </div>
                 <ng-template #actionTemplate let-record>
-                    <button *ngIf="record.respFinancialDTO" class="btn btn-warning btn-sm me-2" (click)="detailRecord(record.id)">
+                    <button *ngIf="record.done" class="btn btn-warning btn-sm me-2" (click)="detailRecord(record.id)">
                         Detail
                     </button>
-                    <button *ngIf="!record.respFinancialDTO" class="btn btn-primary btn-sm" (click)="calculateRecord(record.id)">
+                    <button *ngIf="!record.done" class="btn btn-primary btn-sm" (click)="openCalculateModal(allocateBudgetModal, record.id)">
                         Calculate
                     </button>
+                </ng-template>
+
+                <ng-template #allocateBudgetModal let-modal>
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="modalLabel">Calculate Budget</h4>
+                      <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="mb-3">
+                          <label for="allocatedBudget" class="form-label">Allocated Budget</label>
+                          <input
+                            type="number"
+                            id="allocatedBudget"
+                            [(ngModel)]="allocatedBudget"
+                            class="form-control"
+                            placeholder="Enter allocated budget"
+                            name="allocatedBudget"
+                          />
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-light" (click)="modal.dismiss()">Cancel</button>
+                      <button type="button" class="btn btn-primary" (click)="saveAllocatedBudget(modal)">Save</button>
+                    </div>
                 </ng-template>
                 <swal #deleteSwal
                     title="Are you sure?"

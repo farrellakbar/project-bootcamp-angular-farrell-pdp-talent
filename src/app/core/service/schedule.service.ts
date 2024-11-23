@@ -33,4 +33,8 @@ export class ScheduleService {
   deleteSchedule(id: number): Observable<any> {
     return this.http.put(`${this.apiUrl}/schedule/soft-delete/${id}`, {});
   }
+
+  doneSchedule(id: number, payload: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/schedule/done/${id}`, payload);
+  }  
 }

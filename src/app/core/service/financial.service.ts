@@ -14,19 +14,23 @@ export class FinancialService {
     private http: HttpClient,
   ) { }
   // Metode untuk mendapatkan daftar batch dari API
-  getGroups(): Observable<any> {
-      return this.http.get<any>(`${this.apiUrl}/group/not-deleted`);
+  getFinancial(): Observable<any> {
+      return this.http.get<any>(`${this.apiUrl}/financial/not-deleted`);
   }
 
-  getGroupsActive(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/group/all-active`);
+  getFinancialActive(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/financial/all-active`);
+  }
+
+  getScheduleDetail(scheduleId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/financial/detail-financial/${scheduleId}`);
   }
 
   saveGroup(batchData: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/group`, batchData);
+    return this.http.post<any>(`${this.apiUrl}/financial`, batchData);
   }
 
   deleteGroup(id: number): Observable<any> {
-    return this.http.put(`${this.apiUrl}/group/soft-delete/${id}`, {});
+    return this.http.put(`${this.apiUrl}/financial/soft-delete/${id}`, {});
   }
 }

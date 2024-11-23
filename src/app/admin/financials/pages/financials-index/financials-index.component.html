@@ -1,0 +1,44 @@
+<!-- page title -->
+<app-page-title [breadcrumbItems]="pageTitle" title="Financial"></app-page-title>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <h4 class="header-title">Data Financial</h4>
+                </div>
+                <ng-template #actionTemplate let-record>
+                    <button *ngIf="record.respFinancialDTO" class="btn btn-warning btn-sm me-2" (click)="detailRecord(record.id)">
+                        Detail
+                    </button>
+                    <button *ngIf="!record.respFinancialDTO" class="btn btn-primary btn-sm" (click)="calculateRecord(record.id)">
+                        Calculate
+                    </button>
+                </ng-template>
+                <swal #deleteSwal
+                    title="Are you sure?"
+                    text="You won't be able to revert this!"
+                    icon="warning"
+                    [showCancelButton]="true"
+                    [confirmButtonColor]="'#28bb4b'"
+                    [cancelButtonColor]="'#f34e4e'"
+                    confirmButtonText="Yes, delete it!">
+                </swal>
+                <app-advanced-table 
+                    [tableData]="records" 
+                    [columns]="columns" 
+                    [pagination]="true"
+                    [pageSizeOptions]="pageSizeOptions" 
+                    [hasRowSelection]="false" 
+                    [isSearchable]="true"
+                    (search)="searchData($event)" 
+                    [isSortable]="true" 
+                    (sort)="onSort($event)"
+                    [actionTemplate]="actionTemplate">
+                </app-advanced-table>
+            </div> <!-- end card body-->
+        </div> <!-- end card -->
+    </div><!-- end col-->
+</div>
+<!-- end row-->

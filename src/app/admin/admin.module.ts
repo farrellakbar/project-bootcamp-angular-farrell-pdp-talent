@@ -5,6 +5,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { BatchsRoutingModule } from './batchs/batchs-routing.module';
 import { UnitsRoutingModule } from './units/units-routing.module';
 import { ProgramsRoutingModule } from './programs/programs-routing.module';
+import { FinancialsRoutingModule } from './financials/financials-routing.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ProgramsRoutingModule } from './programs/programs-routing.module';
     AdminRoutingModule,
     BatchsRoutingModule,
     UnitsRoutingModule,
-    ProgramsRoutingModule
+    ProgramsRoutingModule,
+    FinancialsRoutingModule
   ]
 })
 export class AdminModule { }

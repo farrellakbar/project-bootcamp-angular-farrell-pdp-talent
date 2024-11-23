@@ -61,6 +61,12 @@ const routes: Routes = [
           loadChildren: () => import('./schedules/schedules.module').then(m => m.SchedulesModule)
         },
       // CLOSE PAGE SCHEDULES INDEX
+      // OPEN PAGE FINANCIAL INDEX
+        { 
+          path: 'financials', 
+          loadChildren: () => import('./financials/financials.module').then(m => m.FinancialsModule)
+        },
+      // CLOSE PAGE FINANCIAL INDEX
     ]
   },
 ];

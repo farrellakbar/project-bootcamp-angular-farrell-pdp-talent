@@ -62,6 +62,13 @@ const MENU_ITEMS: MenuItem[] = [
     icon: "calendar",
     link: "/admin/schedules",
   },
+  {
+    key: "Financial",
+    label: "Financial",
+    isTitle: false,
+    icon: "dollar-sign",
+    link: "/admin/financials",
+  },
 ];
 
 // menu items for two column menu layout

@@ -68,7 +68,9 @@ export class ScheduleEventComponent implements OnInit {
       duration: data.duration || 1,
       groupId: data.groupId || null,
       programId: data.programId || null,
-      unitId: data.unitId || null  
+      unitId: data.unitId || null,
+      done: data.done || null  
+
     };
     this.activeModal.open(this.content, { backdrop: "static" });
   }

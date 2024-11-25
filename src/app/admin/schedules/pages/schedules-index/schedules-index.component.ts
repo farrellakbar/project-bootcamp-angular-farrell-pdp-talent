@@ -112,7 +112,8 @@ export class SchedulesIndexComponent implements OnInit {
             duration: item.duration,
             groupId: item.respGroupDTO?.id,
             programId: item.respProgramDTO?.id,
-            unitId: item.respUnitDTO?.id
+            unitId: item.respUnitDTO?.id,
+            done: item.done
           }
         }));
         this.calendarOptions.events = [...this.calendarEventsData];
@@ -145,7 +146,8 @@ export class SchedulesIndexComponent implements OnInit {
         duration: 1,
         groupId: 0,
         programId: 0,
-        unitId: 0
+        unitId: 0,
+        done: false,
       }
     };
     this.isEditable = false;
@@ -186,7 +188,8 @@ export class SchedulesIndexComponent implements OnInit {
       duration: event.extendedProps.duration,
       groupId: event.extendedProps.groupId,
       programId: event.extendedProps.programId,
-      unitId: event.extendedProps.unitId
+      unitId: event.extendedProps.unitId,
+      done: event.extendedProps.done
     };
     console.log('ini after event', this.event);
     

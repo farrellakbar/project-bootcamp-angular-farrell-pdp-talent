@@ -71,10 +71,10 @@
   </swal>
 
   <swal #successSaveAlert title="Success" text="Schedule saved successfully!" icon="success"></swal>
-  <swal #errorSaveAlert title="Error" text="Failed to save schedule." icon="error"></swal>
+  <swal #errorSaveAlert title="Error" text="{{errorMessage}}" icon="error"></swal>
 
   <swal #successUpdatedAlert title="Updated" text="Schedule updated successfully!" icon="success"></swal>
-  <swal #errorUpdatedAlert title="Error" text="Failed to update schedule." icon="error"></swal>
+  <swal #errorUpdatedAlert title="Error" text="{{errorMessage}}" icon="error"></swal>
   
   <swal #successDeleteAlert title="Deleted" text="Schedule deleted successfully!" icon="success"></swal>
   <swal #errorDeleteAlert title="Error" text="Failed to delete schedule." icon="error"></swal>

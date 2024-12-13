@@ -19,6 +19,7 @@ export class ScheduleEventComponent implements OnInit {
   groups: any[] = [];
   programs: any[] = [];
   units: any[] = [];
+  errorMessage: string = "";
 
   @Output() eventSaved: EventEmitter<EventInput> = new EventEmitter();
   @Output() eventUpdated: EventEmitter<EventInput> = new EventEmitter();
@@ -72,6 +73,7 @@ export class ScheduleEventComponent implements OnInit {
       done: data.done || null  
 
     };
+    this.errorMessage = "";
     this.activeModal.open(this.content, { backdrop: "static" });
   }
 
@@ -103,21 +105,28 @@ export class ScheduleEventComponent implements OnInit {
           this.activeModal.dismissAll();
         },
         error: (err) => {
-          console.error("Error update schedule:", err);
+          console.error("Error updating schedule:", err);
+          this.errorMessage = err ? err : "Failed to save schedule."; 
+          this.errorUpdatedAlert.update({
+            text: this.errorMessage,
+          });
           this.errorUpdatedAlert.fire();
         }
       });
     }else{
       console.log("ini simpan");
-      
       this.scheduleService.saveSchedule(scheduleData).subscribe({
         next: () => {
           this.successSaveAlert.fire();
           this.eventSaved.emit();
-          this.activeModal.dismissAll(); 
+          this.activeModal.dismissAll();
         },
         error: (err) => {
           console.error("Error saving schedule:", err);
+          this.errorMessage = err ? err : "Failed to save schedule."; 
+          this.errorSaveAlert.update({
+            text: this.errorMessage,
+          });
           this.errorSaveAlert.fire();
         }
       });
